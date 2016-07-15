@@ -11,7 +11,7 @@ var users = require('./routes/users');
 var message = require('./routes/message');
 var MongoClient = require('mongodb').MongoClient;
 
-var url = 'mongodb://localhost:27017/ixp';
+var url = 'mongodb://ticky:ticky@ds017165.mlab.com:17165/heroku_sw59nk98';
 MongoClient.connect(url, function(err, db) {
     console.log("Connected correctly to server.");
     global.db = db;
