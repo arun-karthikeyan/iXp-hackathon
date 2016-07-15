@@ -38741,14 +38741,16 @@ function toArray(list, index) {
 
 angular.module('botapp', [])
 .controller("bot-controller", ["$scope", function($scope)  {
-    $scope.submit = function()  {
-        var message = $scope.question;
-        var socket = window.io.connect("http://localhost:5000");
-        socket.emit("message", message);
-        socket.on("response", function(data)    {
-            message = JSON.parse(data).text;
-            socket.emit("message", message);
-            //alert(data);
-        });
+    // $scope.submit = function()  {
+    //     var socket = window.io.connect("http://localhost:5000");
+    //     socket.emit("message", $scope.question);
+    //     socket.on("response", function(data)    {
+    //         alert(data);
+    //     });
+    // };
+    $scope.tryTicky = function(){
+      $('#tickey-desc').css('display','none');
+      $('#tickey-chat').css('display','block');
     };
 }]);
+

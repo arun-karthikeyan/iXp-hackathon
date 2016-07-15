@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node —-harmony —-use_strict ./bin/www"
+    "start": "node --harmony --use_strict ./bin/www"
   },
   "dependencies": {
     "body-parser": "~1.15.1",
@@ -17,7 +17,7 @@
     "serve-favicon": "~2.3.0",
     "socket.io": "^1.4.8”
   },
-  “engines”: {
-    “node”:”6.0.0”
+  "engines": {
+    "node":"6.0.0"
   }
 }
