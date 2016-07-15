@@ -77,19 +77,27 @@ const actions = {
     issue({context, entities}) {
         return new Promise((resolve, reject) => {
             var intent = firstEntityValue(entities, 'intent');
-           var issueType = firstEntityValue(entities, 'issueType');
-            //var issueType = firstEntityValue(entities, 'subproblem');
+            var issueType = firstEntityValue(entities, 'issueType');
+            var subProblem = firstEntityValue(entities, 'subproblem');
 
             var keys = [];
             keys.push(issueType);
-            getSolution(keys, function(solution)    {
-                if(solution) {
-                    context.solution = solution;
-                }else {
-                    //bot should ask for creating a ticket
-                }
-                return resolve(context);
-            });
+            keys.push(subProblem);
+
+            if(subProblem)  {
+                getSolution(keys, function(solution)    {
+                    if(solution) {
+                        context.solution = solution;
+                    }else {
+                        //bot should ask for creating a ticket
+                    }
+                });
+            }else {
+                context.subproblem = true;
+                delete context.solution;
+            }
+            return resolve(context);
+
         });
     },
 

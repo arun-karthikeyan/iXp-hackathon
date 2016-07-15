@@ -38749,8 +38749,9 @@ angular.module('botapp', [])
     };
     var socket = window.io.connect("http://localhost:5000");
     socket.on("response", function(data)    {
-        var newMessageObj = {isTicky: true, isUser: false, text: data.text, time: new Date().getTime()};
+        var newMessageObj = {isTicky: true, isUser: false, text: JSON.parse(data).text, time: new Date().getTime()};
         $scope.messages.push(newMessageObj);
+        $scope.$apply();
     });
     $scope.sendUserMessage = function() {
       if($scope.currentFormText.trim().length!=0)
